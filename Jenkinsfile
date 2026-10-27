@@ -5,7 +5,8 @@ pipeline {
     environment {
         IMAGE_NAME = "fastdeploy:${BUILD_NUMBER}"
         KUBECONFIG = '/var/lib/jenkins/kubeconfig'
-        HOME = '/home/ubuntu'
+        HOME = '/var/lib/jenkins'
+        DOCKER_CONFIG = '/var/lib/jenkins/.docker'
         MINIKUBE_HOME = '/home/ubuntu/.minikube'
     }
 
