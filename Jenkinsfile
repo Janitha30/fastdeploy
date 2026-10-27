@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -8,13 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/Janitha30/fastdeploy.git'
-            }
-        }
-
         stage('Test') {
             steps {
                 sh '''
@@ -35,8 +27,8 @@ pipeline {
 
         stage('Load Image into Minikube') {
             steps {
-                echo 'Image loading will be handled separately by Ubuntu'
-             }
+                echo 'Image loading handled separately for this test'
+            }
         }
 
         stage('Deploy to Kubernetes') {
@@ -51,8 +43,9 @@ pipeline {
 
     post {
         always {
-            sh 'date'
+            echo "Build result: ${currentBuild.currentResult}"
             echo "Pipeline duration: ${currentBuild.durationString}"
         }
     }
 }
+
