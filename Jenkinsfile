@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -34,12 +35,8 @@ pipeline {
 
         stage('Load Image into Minikube') {
             steps {
-                sh '''
-                    export HOME=/home/ubuntu
-                    export MINIKUBE_HOME=/home/ubuntu/.minikube
-                    minikube image load fastdeploy:v1
-                '''
-            }
+                echo 'Image loading will be handled separately by Ubuntu'
+             }
         }
 
         stage('Deploy to Kubernetes') {
